@@ -262,13 +262,13 @@ class BOHB_EI(base_config_generator):
             rand_vector = vector_to_conf(random_hps, self.type_exp)
 
         else:
-            if self.flag_full_budget:
-                random_hps = self.maximize_func.get_random_sample(self.max_budget, training_set, self.lower[:-1], self.upper[:-1])
-            else:
-                random_hps = self.maximize_func.get_random_sample(budget, training_set, self.lower[:-1], self.upper[:-1])
+            #if self.flag_full_budget:
+            #   random_hps = self.maximize_func.get_random_sample(self.max_budget, training_set, self.lower[:-1], self.upper[:-1])
+            #else:
+            random_hps = self.maximize_func.get_random_sample(budget, training_set, self.lower[:-1], self.upper[:-1])
             rand_vector = vector_to_conf(random_hps, self.type_exp)
 
-        print(rand_vector)
+        #print(rand_vector)
         return ConfigSpace.Configuration(self.configspace, values=rand_vector)
 
 
