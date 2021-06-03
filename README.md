@@ -45,7 +45,6 @@ If the result is small (e.g. 1024), you must perform the following steps:
 
 ```
 usermane hard nofile 10000 
-
 username soft nofile 10000
 ```
    
