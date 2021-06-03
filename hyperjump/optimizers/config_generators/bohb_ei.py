@@ -265,7 +265,7 @@ class BOHB_EI(base_config_generator):
             #if self.flag_full_budget:
             #   random_hps = self.maximize_func.get_random_sample(self.max_budget, training_set, self.lower[:-1], self.upper[:-1])
             #else:
-            random_hps = self.maximize_func.get_random_sample(budget, training_set, self.lower[:-1], self.upper[:-1])
+            random_hps = self.maximize_func.get_random_sample(budget, training_set, self.lower, self.upper)
             rand_vector = vector_to_conf(random_hps, self.type_exp)
 
         #print(rand_vector)
