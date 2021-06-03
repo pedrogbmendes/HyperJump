@@ -21,23 +21,6 @@ class BOHB_TPE(Master):
 					min_bandwidth=1e-3, seed=0, type_exp='fake', configspaceList=None,
 					**kwargs ):
 		"""
-                BOHB performs robust and efficient hyperparameter optimization
-                at scale by combining the speed of Hyperband searches with the
-                guidance and guarantees of convergence of Bayesian
-                Optimization. Instead of sampling new configurations at random,
-                BOHB uses kernel density estimators to select promising candidates.
-
-                .. highlight:: none
-
-                For reference: ::
-
-			@InProceedings{falkner-icml-18,
-			  title =        {{BOHB}: Robust and Efficient Hyperparameter Optimization at Scale},
-			  author =       {Falkner, Stefan and Klein, Aaron and Hutter, Frank},
-			  booktitle =    {Proceedings of the 35th International Conference on Machine Learning},
-			  pages =        {1436--1445},
-			  year =         {2018},
-			}
 
 		Parameters
 		----------

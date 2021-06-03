@@ -9,6 +9,7 @@ Pillow
 sklearn
 pybind11
 pyrfr
+statsmodels
 torch==1.6.0
 torchvision==0.7.0
 ConfigSpace==0.4.14

@@ -31,6 +31,7 @@ requires = [
     #'sgmcmc',
     #'hpolib2',
     'mpmath',
+    'statsmodels',
     'pandas',
     'Pillow',
     'tensorflow==1.14.0',
