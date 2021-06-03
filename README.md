@@ -43,6 +43,10 @@ If the result is small (e.g. 1024), you must perform the following steps:
 * RUN: ```sudo nano /etc/security/limits.conf```
 * Add to this file (usermane is the respective username of the machine (run ```whoami``` to find your username)):
 
-```usermane hard nofile 10000 \\ username soft nofile 10000```
+```
+usermane hard nofile 10000 
+
+username soft nofile 10000
+```
    
 * Reboot your machine ```sudo reboot```
