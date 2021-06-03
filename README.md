@@ -1,11 +1,23 @@
-# README #
+# HyperJump #
+
+
+HyperJump: Accelerating HyperBand via Risk Modelling
+
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### Install Requirements 
-```
-for req in $(cat requirements.txt); do pip3 install $req; done
-```
+
+* install the following libraries 
+```sudo apt-get install libeigen3-dev swig gfortran```
+* install the dependencies 
+```for req in $(cat requirements.txt); do pip3 install $req; done```
+* install HyperJump package
+```python3 setup.py develop --user```
+
+
+
+
 
 
 ### What is this repository for? ###
@@ -40,9 +52,7 @@ pip install hpbandster
 ```
 If you want to develop on the code you could install it via:
 
-```
-python3 setup.py develop --user
-```
+
 Then just add the files I have provided manualy:
 **LIST FILES**
 
