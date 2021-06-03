@@ -26,7 +26,7 @@ You can find some of the benchmarks in this [repository](https://github.com/pedr
 
 
 ### Run HyperJump
-You can deploy HyperJump using the script in [test](https://github.com/pedrogbmendes/HyperJump_/tree/main/test). You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct argument (that can be found in this script).
+You can deploy HyperJump using the script in [test](https://github.com/pedrogbmendes/HyperJump_/tree/main/test). You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct arguments (that can be found in this script).
 
 ### Results/logs HyperJump
 
