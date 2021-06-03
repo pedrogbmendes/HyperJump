@@ -153,25 +153,37 @@ class RandomSampling(base_config_generator):
                     listConfigsBudget.append(c)
 
             
-            rand_int_ = np.random.randint(0, len(listConfigsBudget))
+            #rand_int_ = np.random.randint(0, len(listConfigsBudget))
+            #config = listConfigsBudget[rand_int_]
+            #rand_vector = vector_to_conf(config, self.type_exp)
+            #sample =  ConfigSpace.Configuration(self.configspace, values=rand_vector).get_dictionary()
+
+
+
+            rand_int_ = self.rng.randint(0, len(listConfigsBudget))
             config = listConfigsBudget[rand_int_]
+
+            count_rand = 0
+            while config in training_set_:
+                rand_int_ = self.rng.randint(0, len(listConfigsBudget))
+                config = listConfigsBudget[rand_int_]
+                count_rand += 1
+                if count_rand > 100:
+                    break
+
             rand_vector = vector_to_conf(config, self.type_exp)
             sample =  ConfigSpace.Configuration(self.configspace, values=rand_vector).get_dictionary()
 
-            if config not in training_set_:
-                #print("not in training set " + str(config))
+            info_dict = {}
+            info_dict["incumbent_line"] = self.incumbent_line
+            info_dict["incumbent_value"] = self.incumbent_value
 
-                info_dict = {}
-                info_dict["incumbent_line"] = self.incumbent_line
-                info_dict["incumbent_value"] = self.incumbent_value
+            info_dict['model_based_pick'] = False
+            info_dict['overhead_time'] = time.time() - overhead_time
 
-                info_dict['model_based_pick'] = False
-                info_dict['overhead_time'] = time.time() - overhead_time
-                return sample, info_dict
+            return sample, info_dict
    
-            #print("repeated confgig in training set " + str(config))
-
-            return self.get_config(budget)
+            #return self.get_config(budget)
 
         else:
             sample = self.random_sample(budget, self.training_set).get_dictionary()
