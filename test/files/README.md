@@ -1,3 +1,3 @@
 Some of the file were to large to be added in this repository.
 You can find all the data used to evaluate HyperJump in this link:
-[a link](https://drive.google.com/drive/folders/1LaQJrMygNqTYdFZERuwD08Um8t-3vp6s?usp=sharing)
+[benchmarks link](https://drive.google.com/drive/folders/1LaQJrMygNqTYdFZERuwD08Um8t-3vp6s?usp=sharing)
