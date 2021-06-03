@@ -33,7 +33,7 @@ You can deploy HyperJump using the script in [test](https://github.com/pedrogbme
 By default the results/logs of HyperJump are saved in [logs](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/logs). 
 
 
-### Possible problem
+### Possible problem while running HyperJump
 If you receive some warnings, please verified the version of python and also the versions of the python libraries used.
 
 If while you are running HyperJump, you receive an error like "OSError: [Errno 24] Too many open files", you must check system-wide limits.
@@ -43,8 +43,6 @@ If the result is small (e.g. 1024), you must perform the following steps:
 * RUN: ```sudo nano /etc/security/limits.conf```
 * Add to this file (usermane is the respective username of the machine (run ```whoami``` to find your username)):
 
-```usermane hard nofile 10000```
-
-```username soft nofile 10000```
+```usermane hard nofile 10000 \\ username soft nofile 10000```
    
 * Reboot your machine ```sudo reboot```
