@@ -14,7 +14,7 @@ HyperJump: Accelerating HyperBand via Risk Modelling
 * install HyperJump package
 ```python3 setup.py develop --user```
 * compile the script to compute the risk
-```cd test & gcc -shared -fPIC -o func.so func.c```
+```cd test &$ gcc -shared -fPIC -o func.so func.c```
 
 
 
