@@ -26,7 +26,7 @@ class BOHB_EI(base_config_generator):
     def __init__(self, configspace, min_points_in_model=None,
                  top_n_percent=15, num_samples=64, random_fraction=1 / 3,
                  bandwidth_factor=3, min_bandwidth=1e-3, min_budget=1, max_budget=16, incumbent=[],
-                 incumbent_value=-1, seed=1, type_exp='fake', algorithm_variant='FBS', **kwargs):
+                 incumbent_value=-1, seed=1, type_exp='fake', algorithm_variant='FBS',  configspaceList=None, **kwargs):
         """
         Fits for each given budget a GPs on the best N percent of the
         evaluated configurations on this budget.

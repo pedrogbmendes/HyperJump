@@ -162,6 +162,11 @@ def run(arguments):
 
     elif arguments.algorithm == 'BOHB-EI':
 
+        if arguments.type == 'unet' or arguments.type == 'svm':
+            listConfigSpace = w.listConfigSpace()
+        else:
+            listConfigSpace = None
+
         result_logger.updateSearchSpace(w.dictConfigSpace())
 
         alg = BOHB_EI(configspace=worker.get_configspace(arguments.seed),
@@ -175,7 +180,10 @@ def run(arguments):
                       seed=arguments.seed,
                       type_exp=arguments.type,
                       algorithm_variant=arguments.algorithm_variant,
+                      configspaceList=listConfigSpace,
                       )
+
+                      
     elif arguments.algorithm == 'BOHB-TPE':
 
         if arguments.type == 'unet' or arguments.type == 'svm':
