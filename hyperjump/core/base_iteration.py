@@ -48,7 +48,7 @@ class Datum(object):
 
 class BaseIteration(object):
 
-    def __init__(self, HPB_iter, num_configs, budgets, config_sampler, logger=None, result_logger=None, hyperjump=False, threshold=1.0, eta=3):
+    def __init__(self, HPB_iter, num_configs, budgets, config_sampler, logger=None, result_logger=None, hyperjump=False, threshold=1.0):
         """
         Parameters
         ----------
@@ -102,8 +102,8 @@ class BaseIteration(object):
         if hyperjump:
             self.pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()-1)  
 
-        self.eta = eta
-        print ("The threshold lambd is " + str(self.thresholdRisk) + " and ETA=" + str(self.eta))
+        self.eta = 2
+        print ("The threshold lambd is " + str(self.thresholdRisk)] # + " and ETA=" + str(self.eta))
 
   
     def set2Test(self):
@@ -156,6 +156,11 @@ class BaseIteration(object):
         self.result_logger.bracketInfo(listConfigs, self.budgets[self.stage], self.budgets, self.num_configs) 
          
         return config_id
+
+
+    def updateEta(self, eta):
+        self.eta = eta
+        print("ETA was set to " +str(self.eta))
 
     def add_configuration(self, config=None, config_info={}):
         """

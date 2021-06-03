@@ -141,7 +141,8 @@ class HYPERJUMP(Master):
 		n0 = int(np.floor((self.max_SH_iter)/(s+1)) * self.eta**s)
 		ns = [max(int(n0*(self.eta**(-i))), 1) for i in range(s+1)]
 
-		res = (SuccessiveHalving(HPB_iter=iteration, num_configs=ns, budgets=self.budgets[(-s-1):], config_sampler=self.config_generator, hyperjump=hyperjump, threshold=self.threshold, eta=self.eta **iteration_kwargs))
+		res = (SuccessiveHalving(HPB_iter=iteration, num_configs=ns, budgets=self.budgets[(-s-1):], config_sampler=self.config_generator, hyperjump=hyperjump, threshold=self.threshold,**iteration_kwargs))
+		res.updateEta(self.eta)
 		counter = 0
 		#print("[CONFIG_GEN] Returned new iteration!")
 		return res
