@@ -14,7 +14,7 @@ HyperJump: Accelerating HyperBand via Risk Modelling
 ```python3 setup.py develop --user```
 
 
-You should verified the python version (python3.6), and the version of packages (e.g. numpy=1.16.4, tensorflow=1.14.0, keras=2.2.5, configSpace==0.4.14) to avoid warnings. If you face some errors instllaing the dependencies, you should uninstall and re-install and verified the dependencies of the library being installed.
+You should verified the python version (python3.6), and the version of packages (e.g. numpy=1.16.4, tensorflow=1.14.0, keras=2.2.5, configSpace=0.4.14) to avoid warnings. If you face some errors instllaing the dependencies, you should uninstall and re-install and verified the dependencies of the library being installed.
 
 
 ### Benchmarks
