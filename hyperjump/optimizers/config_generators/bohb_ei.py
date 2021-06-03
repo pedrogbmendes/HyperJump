@@ -223,6 +223,7 @@ class BOHB_EI(base_config_generator):
                            length=50)
 
         self.actualSet2Test = []
+        self.listConfigSpace = configspaceList
 
     def random_sample_old(self, budget, training_set):
         random_hps = self.maximize_func.get_random_sample(budget, training_set, self.lower, self.upper)
