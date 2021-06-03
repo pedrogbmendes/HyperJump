@@ -14,6 +14,7 @@ HyperJump: Accelerating HyperBand via Risk Modelling
 * install HyperJump package
 ```python3 setup.py develop --user```
 * compile the script to compute the risk
+<<<<<<< HEAD
 ```cd test && gcc -shared -fPIC -o func.so func.c```
 
 
@@ -34,6 +35,8 @@ HyperJump: Accelerating HyperBand via Risk Modelling
 * install HyperJump package
 ```python3 setup.py develop --user```
 * compile the script to compute the risk
+=======
+>>>>>>> b9579d38fcd388734a11c9a532f8ead08a66bf06
 ```cd test &$ gcc -shared -fPIC -o func.so func.c```
 
 
@@ -50,7 +53,11 @@ You can find some of the benchmarks in this [repository](https://github.com/pedr
 You can deploy HyperJump using the script in [test](https://github.com/pedrogbmendes/HyperJump_/tree/main/test). You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct argument (that can be found in this script).
 
 ### Results/logs HyperJump
+<<<<<<< HEAD
 By default the results/logs of HyperJump are saved in [logs](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/logs).
+=======
+By default the results/logs of HyperJump are saved in [logs](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/logs). 
+>>>>>>> b9579d38fcd388734a11c9a532f8ead08a66bf06
 
 
 ### Possible problem while running HyperJump
@@ -64,8 +71,15 @@ If the result is small (e.g. 1024), you must perform the following steps:
 * Add to this file (usermane is the respective username of the machine (run ```whoami``` to find your username)):
 
 ```
+<<<<<<< HEAD
 usermane hard nofile 10000
 username soft nofile 10000
 ```
 
+=======
+usermane hard nofile 10000 
+username soft nofile 10000
+```
+   
+>>>>>>> b9579d38fcd388734a11c9a532f8ead08a66bf06
 * Reboot your machine ```sudo reboot```
