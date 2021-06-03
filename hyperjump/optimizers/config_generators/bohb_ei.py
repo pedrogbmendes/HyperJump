@@ -82,8 +82,8 @@ class BOHB_EI(base_config_generator):
         print(type_exp)
         if type_exp == 'fake' or type_exp == 'fake_time':
             # [batch_size, learning_rate, num_cores, synchrony, vm_flavor, budget]
-            lower = np.array([16, 0.00001, 8, 0, 0, min_budget])
-            upper = np.array([256, 0.001, 80, 1, 3, max_budget])
+            lower = np.array([16, 0.00001, 8, 0, 0])
+            upper = np.array([256, 0.001, 80, 1, 3])
 
             # Hyperparameter list without budgets
             hp_list = [[16, 256],
@@ -94,8 +94,8 @@ class BOHB_EI(base_config_generator):
 
         elif type_exp == 'fake_all' or type_exp == 'fake_time_all':
             # [batch_size, learning_rate, num_cores, synchrony, vm_flavor, network, budget]
-            lower = np.array([16, 0.00001, 8, 0, 0, 0, min_budget])
-            upper = np.array([256, 0.001, 80, 1, 3, 2, max_budget])
+            lower = np.array([16, 0.00001, 8, 0, 0, 0])
+            upper = np.array([256, 0.001, 80, 1, 3, 2])
 
             # Hyperparameter list without budgets
             hp_list = [[16, 256],
@@ -122,8 +122,8 @@ class BOHB_EI(base_config_generator):
             sgd_momentum', 	['0.0', '0.2', '0.4','0.6', '0.8'])
             budget =, 		[1, 2, 4, 8, 16])
             '''
-            lower = np.array([0.0, 0.0000001, 8, 4, 0, 0, 0.0, min_budget])
-            upper = np.array([0.8, 0.01, 256, 64, 64, 64, 0.8, max_budget])
+            lower = np.array([0.0, 0.0000001, 8, 4, 0, 0, 0.0])
+            upper = np.array([0.8, 0.01, 256, 64, 64, 64, 0.8])
             # CS = 5*5*6*5*6*6*5 = 135K
             # With budgets -> 135K*5 = 675K
 
@@ -138,8 +138,8 @@ class BOHB_EI(base_config_generator):
 
         elif type_exp == 'unet':
             # {Flavor, batch, learningRate, momentum, nrWorker, sync}
-            lower = np.array([1, 1, 0.000001, 0.9, 1, 1, min_budget])
-            upper = np.array([2, 2, 0.0001, 0.99, 2, 2, max_budget])
+            lower = np.array([1, 1, 0.000001, 0.9, 1, 1])
+            upper = np.array([2, 2, 0.0001, 0.99, 2, 2])
 
             # Hyperparameter list without budgets
             hp_list = [[1, 2],  # Flavor
@@ -152,8 +152,8 @@ class BOHB_EI(base_config_generator):
 
         elif type_exp == 'svm':
             # {kernel, degree, gamma, c}
-            lower = np.array([1, 10e-6, 10e-6, min_budget])
-            upper = np.array([3, 100, 100, max_budget])
+            lower = np.array([1, 10e-6, 10e-6])
+            upper = np.array([3, 100, 100])
 
             # Hyperparameter list without budgets
             hp_list = [[1, 2, 3],  # kernel
