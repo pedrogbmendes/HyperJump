@@ -2327,11 +2327,11 @@ def risk_parellel(SEL, UNSEL, stage, budgets):
                         area = quad(func, 0, mp.inf, limit=1000) #, epsabs=1e-12)
 
                     except Warning as e:
-                        print("ERROR in INTEGRAL1!!!!")
+                        #print("ERROR in INTEGRAL1!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
                     except Exception:
-                        print("ERROR in INTEGRAL2!!!!")
+                        #print("ERROR in INTEGRAL2!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
 
@@ -2375,11 +2375,11 @@ def risk_parellel(SEL, UNSEL, stage, budgets):
                         area = quad(func, 0, mp.inf, limit=1000) #, epsabs=1e-12)
 
                     except Warning as e:
-                        print("ERROR in INTEGRAL3!!!!")
+                        #print("ERROR in INTEGRAL3!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
                     except Exception:
-                        print("ERROR in INTEGRAL4!!!!")
+                        #print("ERROR in INTEGRAL4!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
 
@@ -2425,11 +2425,11 @@ def risk_parellel(SEL, UNSEL, stage, budgets):
                     try:
                         area =  nquad(func, [[Max_tested_UNSEL, np.inf],[0, np.inf]], opts=opts)
                     except Warning as e:
-                        print("ERROR in INTEGRAL5!!!!")
+                        #print("ERROR in INTEGRAL5!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
                     except Exception:
-                        print("ERROR in INTEGRAL6!!!!")
+                        #print("ERROR in INTEGRAL6!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
             elif Max_tested_UNSEL == -1 and Max_tested_SEL != -1:
@@ -2443,11 +2443,11 @@ def risk_parellel(SEL, UNSEL, stage, budgets):
                     try:
                         area =  nquad(func, [bounds_k ,[0, np.inf]], opts=opts)
                     except Warning as e:
-                        print("ERROR in INTEGRAL7!!!!")
+                        #print("ERROR in INTEGRAL7!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
                     except Exception:
-                        print("ERROR in INTEGRAL8!!!!")
+                        #print("ERROR in INTEGRAL8!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
 
@@ -2465,11 +2465,11 @@ def risk_parellel(SEL, UNSEL, stage, budgets):
                     try:
                         area =  nquad(func, [bounds_k1 , [0, np.inf]], opts=opts)
                     except Warning as e:
-                        print("ERROR in INTEGRAL9!!!!")
+                        #print("ERROR in INTEGRAL9!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
                     except Exception:
-                        print("ERROR in INTEGRAL10!!!!")
+                        #print("ERROR in INTEGRAL10!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
             else:
@@ -2480,11 +2480,11 @@ def risk_parellel(SEL, UNSEL, stage, budgets):
                         area =  nquad(func, [[-np.inf, np.inf],[0, np.inf]], opts=opts)        
 
                     except Warning as e:
-                        print("ERROR in INTEGRAL11!!!!")
+                        #print("ERROR in INTEGRAL11!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
                     except Exception:
-                        print("ERROR in INTEGRAL12!!!!")
+                        #print("ERROR in INTEGRAL12!!!!")
                         time_final = time.time() - time_init_int
                         return 1, time_final
         # else:
