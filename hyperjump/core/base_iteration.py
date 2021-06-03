@@ -234,12 +234,6 @@ class BaseIteration(object):
         d.exceptions[budget] = exception
         self.num_running -= 1
 
-        if self.dynamicThreshold:
-            if self.stage == len(self.num_configs)-1: #if in last stage
-                a_config = 1 - d.results[budget]['loss']
-                print("acc = " + str(a_config) + " best in curr bracket = " + str(self.bestAcc_in_bracket))
-                if a_config > self.bestAcc_in_bracket:
-                    self.bestAcc_in_bracket = a_config
 
     def get_next_run(self):
         """
