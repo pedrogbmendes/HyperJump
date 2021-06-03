@@ -5,7 +5,7 @@ HyperJump: Accelerating HyperBand via Risk Modelling
 
 
 ### Install Requirements 
-
+* Install python3.6 and pip3
 * install the following libraries 
 ```sudo apt-get install libeigen3-dev swig gfortran```
 * install the dependencies 
