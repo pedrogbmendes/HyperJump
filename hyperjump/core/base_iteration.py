@@ -103,7 +103,7 @@ class BaseIteration(object):
             self.pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()-1)  
 
         self.eta = 2
-        print ("The threshold lambd is " + str(self.thresholdRisk)] # + " and ETA=" + str(self.eta))
+        print ("The threshold lambd is " + str(self.thresholdRisk)) # + " and ETA=" + str(self.eta))
 
   
     def set2Test(self):
