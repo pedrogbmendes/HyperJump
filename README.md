@@ -14,31 +14,7 @@ HyperJump: Accelerating HyperBand via Risk Modelling
 * install HyperJump package
 ```python3 setup.py develop --user```
 * compile the script to compute the risk
-<<<<<<< HEAD
 ```cd test && gcc -shared -fPIC -o func.so func.c```
-
-
-
-You should verified the python version (python3.6), and the version of packages (e.g. numpy=1.16.4, tensorflow=1.14.0, keras=2.2.5, configSpace=0.4.14) to avoid warnings. If you face some errors installing the dependencies, you should uninstall and re-install and verified # HyperJump #
-
-
-HyperJump: Accelerating HyperBand via Risk Modelling
-
-
-### Install Requirements
-* Install python3.6 and pip3
-* Clone this repository and enter in this directory
-* install the following libraries
-```sudo apt-get install libeigen3-dev swig gfortran```
-* install the dependencies
-```for req in $(cat requirements.txt); do pip3 install $req; done```
-* install HyperJump package
-```python3 setup.py develop --user```
-* compile the script to compute the risk
-=======
->>>>>>> b9579d38fcd388734a11c9a532f8ead08a66bf06
-```cd test &$ gcc -shared -fPIC -o func.so func.c```
-
 
 
 You should verified the python version (python3.6), and the version of packages (e.g. numpy=1.16.4, tensorflow=1.14.0, keras=2.2.5, configSpace=0.4.14) to avoid warnings. If you face some errors installing the dependencies, you should uninstall and re-install and verified the dependencies of the library being installed.
@@ -53,11 +29,8 @@ You can find some of the benchmarks in this [repository](https://github.com/pedr
 You can deploy HyperJump using the script in [test](https://github.com/pedrogbmendes/HyperJump_/tree/main/test). You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct argument (that can be found in this script).
 
 ### Results/logs HyperJump
-<<<<<<< HEAD
+
 By default the results/logs of HyperJump are saved in [logs](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/logs).
-=======
-By default the results/logs of HyperJump are saved in [logs](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/logs). 
->>>>>>> b9579d38fcd388734a11c9a532f8ead08a66bf06
 
 
 ### Possible problem while running HyperJump
@@ -71,15 +44,9 @@ If the result is small (e.g. 1024), you must perform the following steps:
 * Add to this file (usermane is the respective username of the machine (run ```whoami``` to find your username)):
 
 ```
-<<<<<<< HEAD
 usermane hard nofile 10000
 username soft nofile 10000
 ```
 
-=======
-usermane hard nofile 10000 
-username soft nofile 10000
-```
-   
->>>>>>> b9579d38fcd388734a11c9a532f8ead08a66bf06
+
 * Reboot your machine ```sudo reboot```
