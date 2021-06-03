@@ -3,21 +3,28 @@ import subprocess
 import os
 
 hyperjump = "y"
-algorithm = "BOHB++"
+algorithm = "HJ"
+#algorithm = "HB"
 #algorithm = "BOHB-TPE"
 #algorithm = "BOHB-EI"
+
 algorithm_variant = "FBS"
 #algorithm_variant = "FBS_DT" 
-random_fraction = "0.0"
+
+random_fraction = "0.0" # used for bracket warm starting (% of configs select at random to insert in a new bracket)
 
 eta="2"
 
-
-if algorithm == "BOHB-TPE":
+if algorithm == "BOHB-TPE" or algorithm == "BOHB-EI":
     hyperjump = "n"
-    threshold_list = [1.0]
+    threshold_list = [0.0]
     random_fraction = "0.3"
+elif algorithm == "HB":
+    hyperjump = "n"
+    threshold_list = [0.0]
+    random_fraction = "0.0"
 else:
+    #hyperjump
     #threshold_list = [0.1, 0.01, 0.001, 1.0]
     #threshold_list = [0.001, 1.0]
     threshold_list = [0.1]
