@@ -4,8 +4,6 @@
 HyperJump: Accelerating HyperBand via Risk Modelling
 
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### Install Requirements 
 
 * install the following libraries 
@@ -16,7 +14,12 @@ This README would normally document whatever steps are necessary to get your app
 ```python3 setup.py develop --user```
 
 
+You should verified the python version (python3.6), and the version of packages (e.g. numpy=1.16.4, tensorflow=1.14.0, keras=2.2.5, configSpace==0.4.14) to avoid warnings. If you face some errors instllaing the dependencies, you should uninstall and re-install and verified the dependencies of the library being installed.
 
+
+
+### Benchmarks
+You can find some of the benchmarks in this [repository link](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/files) or in this  [link](https://drive.google.com/drive/folders/1LaQJrMygNqTYdFZERuwD08Um8t-3vp6s?usp=sharing)
 
 
 
