@@ -19,7 +19,10 @@ if algorithm == "BOHB-TPE" or algorithm == "BOHB-EI":
     hyperjump = "n"
     threshold_list = [0.0]
     random_fraction = "0.3"
+
 elif algorithm == "HB":
+    #HJ can be seen as HB without any tricks and jumps
+    #algorithm = "HJ"
     hyperjump = "n"
     threshold_list = [0.0]
     random_fraction = "0.0"

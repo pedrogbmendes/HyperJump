@@ -133,6 +133,9 @@ class RandomSampling(base_config_generator):
         rand_vector = vector_to_conf(random_hps, self.type_exp)
         return ConfigSpace.Configuration(self.configspace, values=rand_vector)
 
+    def returntrainingTime(self):
+        return 0.0
+
     def get_config(self, budget, no_total_configs=1):
         useless = self.rng.rand()
         overhead_time = time.time()
