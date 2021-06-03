@@ -168,7 +168,7 @@ class BOHB_EI(base_config_generator):
 
         # -------------------------------------------------------------------------
         self.total_time = time.time()
-        self.total_results = 128
+        self.total_results = 500
         self.config_num = 0
         self.sampled = False
         print_progress_bar(0, self.total_results, prefix='\nProgress:', suffix="Complete  Finished in:h???:m??:s??",

@@ -235,7 +235,7 @@ class BOHB_TPE(base_config_generator):
 
         # -------------------------------------------------------------------------
         self.total_time = time.time()
-        self.total_results = 128
+        self.total_results = 500
         self.config_num = 0
         print_progress_bar(0, self.total_results, prefix='\nProgress:', suffix="Complete  Finished in:h???:m??:s??",
                            length=50)
