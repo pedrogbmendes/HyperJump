@@ -574,9 +574,9 @@ class HYPERJUMP(base_config_generator):
                         conf_vec_b = np.append(conf_vec, budget)
                         config_vec_b = list(conf_vec_b)
 
-                        print(config_vec_b)
-                        print(self.actualSet2Test)
-                        print(" --")
+                        #print(config_vec_b)
+                        #print(self.actualSet2Test)
+                        #print(" --")
 
                     #best_vector = vector_to_conf(best_hps, self.type_exp)
                     #sample = self.transform_config(best_vector)

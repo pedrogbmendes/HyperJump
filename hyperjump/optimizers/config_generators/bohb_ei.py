@@ -6,6 +6,7 @@ import ConfigSpace.hyperparameters
 import ConfigSpace.util
 import numpy as np
 import george
+import copy
 
 from hyperjump.core.base_config_generator import base_config_generator
 from hyperjump.optimizers.models.trimtuner_dt import EnsembleDTs
@@ -78,11 +79,11 @@ class BOHB_EI(base_config_generator):
         self.training_set = np.array([])
         self.costs = []
         # ------------------------------------------------------------------------
-
-        if type_exp == 'fake':
-            # [batch_size, learning_rate, num_cores, synchronism, vm_flavor, budget]
-            lower = np.array([16, 0.00001, 8, 0, 0])
-            upper = np.array([256, 0.001, 80, 1, 3])
+        print(type_exp)
+        if type_exp == 'fake' or type_exp == 'fake_time':
+            # [batch_size, learning_rate, num_cores, synchrony, vm_flavor, budget]
+            lower = np.array([16, 0.00001, 8, 0, 0, min_budget])
+            upper = np.array([256, 0.001, 80, 1, 3, max_budget])
 
             # Hyperparameter list without budgets
             hp_list = [[16, 256],
@@ -91,8 +92,26 @@ class BOHB_EI(base_config_generator):
                        [0, 1],
                        [0, 1, 2, 3]]
 
+        elif type_exp == 'fake_all' or type_exp == 'fake_time_all':
+            # [batch_size, learning_rate, num_cores, synchrony, vm_flavor, network, budget]
+            lower = np.array([16, 0.00001, 8, 0, 0, 0, min_budget])
+            upper = np.array([256, 0.001, 80, 1, 3, 2, max_budget])
+
+            # Hyperparameter list without budgets
+            hp_list = [[16, 256],
+                       [0.00001, 0.0001, 0.001],
+                       [0, 1, 2], 
+                       [8, 16, 32, 48, 64, 80],
+                       [0, 1],
+                       [0, 1, 2, 3]]
+
         # search_space_size = 1.440k #288*5
-        else:
+        elif type_exp == 'mnist':
+            # [dropout_rate, learning_rate, num_fc_units, num_filters_1, num_filters_2, sgd_momentum, budget]
+            # lower = np.array([1, 1, 1, 1, 1, 1, 1])
+            # upper = np.array([3, 4, 3, 3, 3, 4, 9])
+            # search_space_size = 3.888k #1296*3
+
             '''
             dropout_rate', 	['0.0', '0.2', '0.4','0.6', '0.8'])
             learning_rate', ['0.000001', '0.00001', '0.0001', '0.001', '0.01'])
@@ -103,10 +122,10 @@ class BOHB_EI(base_config_generator):
             sgd_momentum', 	['0.0', '0.2', '0.4','0.6', '0.8'])
             budget =, 		[1, 2, 4, 8, 16])
             '''
-            lower = np.array([0.0, 0.0000001, 8, 4, 0, 0, 0.0])
-            upper = np.array([0.8, 0.01, 256, 64, 64, 64, 0.8])
+            lower = np.array([0.0, 0.0000001, 8, 4, 0, 0, 0.0, min_budget])
+            upper = np.array([0.8, 0.01, 256, 64, 64, 64, 0.8, max_budget])
             # CS = 5*5*6*5*6*6*5 = 135K
-            # With budgets -> 135K*3 = 405K
+            # With budgets -> 135K*5 = 675K
 
             # Hyperparameter list without budgets
             hp_list = [[0.0, 0.2, 0.4, 0.6, 0.8],
@@ -116,6 +135,35 @@ class BOHB_EI(base_config_generator):
                        [0, 4, 8, 16, 32, 64],
                        [0, 4, 8, 16, 32, 64],
                        [0.0, 0.2, 0.4, 0.6, 0.8]]
+
+        elif type_exp == 'unet':
+            # {Flavor, batch, learningRate, momentum, nrWorker, sync}
+            lower = np.array([1, 1, 0.000001, 0.9, 1, 1, min_budget])
+            upper = np.array([2, 2, 0.0001, 0.99, 2, 2, max_budget])
+
+            # Hyperparameter list without budgets
+            hp_list = [[1, 2],  # Flavor
+                       [1, 2],  # batch
+                       [0.000001, 0.00001, 0.0001],  # learningRate
+                       [0.9, 0.95, 0.99],  # momentum
+                       [1, 2],  # nrWorker
+                       [1, 2]]  # sync
+        # search_space_size = 720 #144*5
+
+        elif type_exp == 'svm':
+            # {kernel, degree, gamma, c}
+            lower = np.array([1, 10e-6, 10e-6, min_budget])
+            upper = np.array([3, 100, 100, max_budget])
+
+            # Hyperparameter list without budgets
+            hp_list = [[1, 2, 3],  # kernel
+                       [0.001, 0.01, 0.1, 1, 10, 100],  # gamma
+                       [0.001, 0.01, 0.1, 1, 10, 100]]  # c
+
+        else:
+            raise BaseException(("Invalid/unimplemented experiment %s", type_exp))
+
+
 
         np.random.seed(seed)
         rng = np.random.RandomState(np.int64(seed))
@@ -168,16 +216,61 @@ class BOHB_EI(base_config_generator):
 
         # -------------------------------------------------------------------------
         self.total_time = time.time()
-        self.total_results = 500
+        self.total_results = 128
         self.config_num = 0
         self.sampled = False
         print_progress_bar(0, self.total_results, prefix='\nProgress:', suffix="Complete  Finished in:h???:m??:s??",
                            length=50)
 
-    def random_sample(self, budget, training_set):
+        self.actualSet2Test = []
+
+    def random_sample_old(self, budget, training_set):
         random_hps = self.maximize_func.get_random_sample(budget, training_set, self.lower, self.upper)
         rand_vector = vector_to_conf(random_hps, self.type_exp)
         return ConfigSpace.Configuration(self.configspace, values=rand_vector)
+
+
+    def random_sample(self, budget, training_set):
+        if self.type_exp ==  "unet" or self.type_exp ==  "svm":
+            r_int = self.rng.randint(len(self.listConfigSpace))
+            random_hps =  copy.deepcopy(self.listConfigSpace[r_int]) 
+            #while random_hps not in self.listConfigSpace:
+            #    r_int = self.rng.randint(len(self.listConfigSpace))
+            #    random_hps = self.listConfigSpace[r_int]  
+
+            random_hps_maxBud = copy.deepcopy(random_hps)
+            random_hps_maxBud[-1] = self.max_budget
+            random_hps[-1] = budget   
+
+
+            count_it = 0
+            while random_hps in self.actualSet2Test or random_hps_maxBud in training_set.tolist():
+                r_int = self.rng.randint(len(self.listConfigSpace))
+                random_hps =  copy.deepcopy(self.listConfigSpace[r_int]) 
+                random_hps_maxBud = copy.deepcopy(random_hps)
+                random_hps_maxBud[-1] = self.max_budget
+                random_hps[-1] = budget  
+                #print(random_hps)
+                count_it +=1
+                if count_it >100:
+                    break
+
+            #random_hps[-1] = budget
+
+            self.actualSet2Test.append(copy.copy(random_hps))
+            rand_vector = vector_to_conf(random_hps, self.type_exp)
+
+        else:
+            if self.flag_full_budget:
+                random_hps = self.maximize_func.get_random_sample(self.max_budget, training_set, self.lower[:-1], self.upper[:-1])
+            else:
+                random_hps = self.maximize_func.get_random_sample(budget, training_set, self.lower[:-1], self.upper[:-1])
+            rand_vector = vector_to_conf(random_hps, self.type_exp)
+
+        print(rand_vector)
+        return ConfigSpace.Configuration(self.configspace, values=rand_vector)
+
+
 
     def get_config(self, budget, no_total_configs=1):
         """
@@ -229,12 +322,50 @@ class BOHB_EI(base_config_generator):
                     if self.algorithm_variant == 'FBS':
                         target_budget_cost = self.max_budget
 
-                if self.type_exp == 'fake':
-                    best_hps, loss, sigma = self.maximize_func.maximize_all(self.training_set, 0, None, 0, budget)
-                    best_hps = np.append(best_hps, budget)
-                else:
-                    best_hps, loss, sigma = self.maximize_func.maximize_ei_no_budget(budget, self.training_set)
+                #if self.type_exp == 'fake':
+                #    best_hps, loss, sigma = self.maximize_func.maximize_all(self.training_set, 0, None, 0, budget)
+                #    best_hps = np.append(best_hps, budget)
+                #else:
+                #    best_hps, loss, sigma = self.maximize_func.maximize_ei_no_budget(budget, self.training_set)
                 # print(best_hps)
+
+                if self.type_exp == 'fake' or self.type_exp == 'fake_all' or self.type_exp == 'fake_time' or self.type_exp == 'fake_time_all':
+                    #best_hps, loss, sigma = self.maximize_func.maximize_all(self.training_set, target_budget,
+                    #                                                        self.cost_model, target_budget_cost, budget)
+                    if  "EI$" in self.algorithm_variant or "Hybrid" in self.algorithm_variant:
+                        #EI/$
+                        best_hps, loss, sigma = self.maximize_func.maximize_all(self.configs2Test, target_budget,
+                                                                            self.cost_model, target_budget_cost, budget)
+                    else:
+                        #EI
+                        best_hps, loss, sigma = self.maximize_func.maximize_all(self.configs2Test, target_budget,
+                                                                            None, target_budget_cost, budget)
+                elif self.type_exp == 'unet' or self.type_exp == 'svm':
+                    if  "EI$" in self.algorithm_variant or "Hybrid" in self.algorithm_variant:
+                        #EI/$
+                        best_hps, loss, sigma = self.maximize_func.maximize_list(self.configs2Test, target_budget,
+                                                                            self.cost_model, target_budget_cost, budget, self.listConfigSpace)
+                    else:
+                        #EI
+                        best_hps, loss, sigma = self.maximize_func.maximize_list(self.configs2Test, target_budget,
+                                                                            None, target_budget_cost, budget, self.listConfigSpace)                                                                         
+                else:
+                    #best_hps, loss, sigma = self.maximize_func.maximize_ei(self.training_set, budget, target_budget,
+                    #                                                       target_budget_cost,
+                    #                                                       cost_model=self.cost_model)
+
+                    if  "EI$" in self.algorithm_variant or "Hybrid" in self.algorithm_variant:
+                        #EI/$
+                        best_hps, loss, sigma = self.maximize_func.maximize_ei(self.configs2Test, budget, target_budget,
+                                                                           target_budget_cost,
+                                                                           cost_model=self.cost_model)
+                    else:
+                        #EI
+                        best_hps, loss, sigma = self.maximize_func.maximize_ei(self.configs2Test, budget, target_budget,
+                                                                           target_budget_cost,cost_model=None)
+                              
+
+
                 info_dict['predicted_loss_mean'], info_dict['predicted_loss_stdv'] = loss[0], sigma[0]
 
                 best_vector = vector_to_conf(best_hps, self.type_exp)
@@ -257,6 +388,7 @@ class BOHB_EI(base_config_generator):
         info_dict["incumbent_line"] = self.incumbent_line
         info_dict["incumbent_value"] = self.incumbent_value
         info_dict['overhead_time'] = (time.time() - start_time)
+        self.actualSet2Test.clear()
 
         return sample, info_dict
 
