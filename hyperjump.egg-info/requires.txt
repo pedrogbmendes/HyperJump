@@ -20,8 +20,6 @@ cma
 theano
 matplotlib
 lasagne
-sgmcmc
-hpolib2
 mpmath
 pandas
 Pillow
