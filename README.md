@@ -35,8 +35,9 @@ By default the results/logs of HyperJump are saved in [logs](https://github.com/
 
 ### Possible problem
 If you receive some warnings, please verified the version of python and also the versions of the python libraries used.
+
 If while you are running HyperJump, you receive an error like "OSError: [Errno 24] Too many open files", you must check system-wide limits.
-RUN ```ulimit -m```
+RUN ```ulimit -n```
 If the result is small (e.g. 1024), you must perform the following steps:
 
 * RUN: ```sudo nano /etc/security/limits.conf```
