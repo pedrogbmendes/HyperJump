@@ -333,38 +333,21 @@ class BOHB_EI(base_config_generator):
                 if self.type_exp == 'fake' or self.type_exp == 'fake_all' or self.type_exp == 'fake_time' or self.type_exp == 'fake_time_all':
                     #best_hps, loss, sigma = self.maximize_func.maximize_all(self.training_set, target_budget,
                     #                                                        self.cost_model, target_budget_cost, budget)
-                    if  "EI$" in self.algorithm_variant or "Hybrid" in self.algorithm_variant:
-                        #EI/$
-                        best_hps, loss, sigma = self.maximize_func.maximize_all(self.configs2Test, target_budget,
-                                                                            self.cost_model, target_budget_cost, budget)
-                    else:
-                        #EI
-                        best_hps, loss, sigma = self.maximize_func.maximize_all(self.configs2Test, target_budget,
-                                                                            None, target_budget_cost, budget)
+                    #EI
+                    best_hps, loss, sigma = self.maximize_func.maximize_all(self.training_set, 0,None, 0, budget)
+                
+                    best_hps = np.append(best_hps, budget)
+
                 elif self.type_exp == 'unet' or self.type_exp == 'svm':
-                    if  "EI$" in self.algorithm_variant or "Hybrid" in self.algorithm_variant:
-                        #EI/$
-                        best_hps, loss, sigma = self.maximize_func.maximize_list(self.configs2Test, target_budget,
-                                                                            self.cost_model, target_budget_cost, budget, self.listConfigSpace)
-                    else:
-                        #EI
-                        best_hps, loss, sigma = self.maximize_func.maximize_list(self.configs2Test, target_budget,
-                                                                            None, target_budget_cost, budget, self.listConfigSpace)                                                                         
+                    best_hps, loss, sigma = self.maximize_func.maximize_list(self.training_set, 0,None, 0, budget, self.listConfigSpace)                                                                         
+                
+                    best_hps = np.append(best_hps, budget)
+
                 else:
                     #best_hps, loss, sigma = self.maximize_func.maximize_ei(self.training_set, budget, target_budget,
                     #                                                       target_budget_cost,
                     #                                                       cost_model=self.cost_model)
-
-                    if  "EI$" in self.algorithm_variant or "Hybrid" in self.algorithm_variant:
-                        #EI/$
-                        best_hps, loss, sigma = self.maximize_func.maximize_ei(self.configs2Test, budget, target_budget,
-                                                                           target_budget_cost,
-                                                                           cost_model=self.cost_model)
-                    else:
-                        #EI
-                        best_hps, loss, sigma = self.maximize_func.maximize_ei(self.configs2Test, budget, target_budget,
-                                                                           target_budget_cost,cost_model=None)
-                              
+                    best_hps, loss, sigma = self.maximize_func.maximize_ei_no_budget(budget, self.training_set)
 
 
                 info_dict['predicted_loss_mean'], info_dict['predicted_loss_stdv'] = loss[0], sigma[0]
