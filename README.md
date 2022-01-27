@@ -11,6 +11,7 @@ HyperJump: Accelerating HyperBand via Risk Modelling
 ```sudo apt-get install libeigen3-dev swig gfortran```
 * install the dependencies
 ```for req in $(cat requirements.txt); do pip3 install $req; done```
+* download datasets (Cifar10, Cifar100, ImageNet) from [link](https://drive.google.com/drive/folders/1zjB6wMANiKwB2A1yil2hQ8H_qyeSe2yt) (pzb2 files) and then copy them to a folder called .torch  (see [link](https://github.com/D-X-Y/NATS-Bench) for more details or if you have problems).
 * install HyperJump package
 ```python3 setup.py develop --user```
 * compile the script to compute the risk
@@ -21,16 +22,18 @@ You should verified the python version (python3.6), and the version of packages 
 
 
 ### Benchmarks
-You can find some of the benchmarks in this [repository](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/files) or in this  [link](https://drive.google.com/drive/folders/1LaQJrMygNqTYdFZERuwD08Um8t-3vp6s?usp=sharing)
+You can find some of the benchmarks in this [link](https://drive.google.com/drive/folders/1LaQJrMygNqTYdFZERuwD08Um8t-3vp6s?usp=sharing)
 
 
 
 ### Run HyperJump
-You can deploy HyperJump using the script in [test](https://github.com/pedrogbmendes/HyperJump_/tree/main/test). You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct arguments (that can be found in this script).
+You can deploy HyperJump using the script run.py that you can finf in test folder. You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct arguments (that can be found in this script).
+The seeds used in each independent run are set in this script (run.py), and we generate one different seed for each run and give it as input to the function fake_workload.py that is launched in this script.
+
 
 ### Results/logs HyperJump
 
-By default the results/logs of HyperJump are saved in [logs](https://github.com/pedrogbmendes/HyperJump_/tree/main/test/logs).
+By default the results/logs of HyperJump are saved in logs folder that you can found in the same folder from where you launch HyperJump (test/logs folder)
 
 
 ### Possible problem while running HyperJump
