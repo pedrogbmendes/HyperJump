@@ -43,9 +43,9 @@ requires = [
 
 setuptools.setup(name='hyperjump',
                 version='1',
-                author='-',
-                author_email='-',
-                url='-',
+                author='Pedro Mendes, Maria Casimiro, Paolo Romano, David Gerlan',
+                author_email='pgmendes@andrew.cmu.edu',
+                url='https://arxiv.org/pdf/2108.02479.pdf',
                 description='HyperJump: Accelerating HyperBand via Risk Modelling',
                 long_description=long_description,
                 keywords='Machine Learining, Bayesian Optimization, HyperBand, Hyper-parameter tuning',
