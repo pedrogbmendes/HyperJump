@@ -4,6 +4,7 @@
 HyperJump: Accelerating HyperBand via Risk Modelling
 [paper](https://arxiv.org/pdf/2108.02479.pdf)
 
+The implementation present in this repo is based on [BOHB](https://github.com/automl/HpBandSter).
 
 ### Install Requirements
 * Install python3.6 and pip3
