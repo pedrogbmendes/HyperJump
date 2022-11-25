@@ -2,19 +2,20 @@
 
 
 HyperJump: Accelerating HyperBand via Risk Modelling
+[paper](https://arxiv.org/abs/2108.02479#:~:text=Download%3A-,PDF,-Other%20formats)
 
 
 ### Install Requirements
 * Install python3.6 and pip3
 * Clone this repository and enter in this directory
-* install the following libraries
+* Install the following libraries
 ```sudo apt-get install libeigen3-dev swig gfortran```
-* install the dependencies
+* Install the dependencies
 ```for req in $(cat requirements.txt); do pip3 install $req; done```
-* download datasets (Cifar10, Cifar100, ImageNet) from [link](https://drive.google.com/drive/folders/1zjB6wMANiKwB2A1yil2hQ8H_qyeSe2yt) (pzb2 files) and then copy them to a folder called .torch  (see [link](https://github.com/D-X-Y/NATS-Bench) for more details or if you have problems).
-* install HyperJump package
+* download datasets (Cifar10, Cifar100, ImageNet) from [Nats-bench](https://drive.google.com/drive/folders/1zjB6wMANiKwB2A1yil2hQ8H_qyeSe2yt) (pzb2 files) and then copy them to a folder called .torch  (see [Nats-bench-repo](https://github.com/D-X-Y/NATS-Bench) for more details or if you have problems).
+* Install HyperJump package
 ```python3 setup.py develop --user```
-* compile the script to compute the risk
+* Compile the script to compute the risk EAR
 ```cd test && gcc -shared -fPIC -o func.so func.c```
 
 
@@ -22,7 +23,8 @@ You should verified the python version (python3.6), and the version of packages 
 
 
 ### Benchmarks
-You can find some of the benchmarks in this [link](https://drive.google.com/drive/folders/1LaQJrMygNqTYdFZERuwD08Um8t-3vp6s?usp=sharing)
+You can find some of the benchmarks in this [benchmarks](https://drive.google.com/drive/folders/1LaQJrMygNqTYdFZERuwD08Um8t-3vp6s?usp=sharing).
+We also benchmarked HyperJump using Neural Architectural Search scenario using Cifar10, Cifar100, and ImageNet, whose datasets can be found in [Nats-bench-repo](https://github.com/D-X-Y/NATS-Bench).
 
 
 
