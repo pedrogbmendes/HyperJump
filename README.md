@@ -2,7 +2,7 @@
 
 
 HyperJump: Accelerating HyperBand via Risk Modelling
-[paper](https://arxiv.org/abs/2108.02479#:~:text=Download%3A-,PDF,-Other%20formats)
+[paper](https://arxiv.org/pdf/2108.02479.pdf)
 
 
 ### Install Requirements
@@ -29,12 +29,11 @@ We also benchmarked HyperJump using Neural Architectural Search scenario using C
 
 
 ### Run HyperJump
-You can deploy HyperJump using the script run.py that you can finf in test folder. You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct arguments (that can be found in this script).
+You can deploy HyperJump using the script run.py that you can find in test folder. You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct arguments (that can be found in this script).
 The seeds used in each independent run are set in this script (run.py), and we generate one different seed for each run and give it as input to the function fake_workload.py that is launched in this script.
 
 
 ### Results/logs HyperJump
-
 By default the results/logs of HyperJump are saved in logs folder that you can found in the same folder from where you launch HyperJump (test/logs folder)
 
 
