@@ -302,7 +302,7 @@ class BaseIteration(object):
         #run = "sortLCB"
         #run = "sortUCB"
         #run = "newRisk"
-        run = "newRisk_parallel"
+        run = "newRisk_parallel" # THIS IS IN USED. the other were implemented for testing.
         #run = "ES"
         #run = "sortSTD"
         #run = "sortRisk"
@@ -1027,7 +1027,7 @@ class BaseIteration(object):
         #sort = "newRisk"
         #sort = "newRisk2"
         #sort = "newRisk2_parallel"
-        sort = "newRisk3_parallel"
+        sort = "newRisk3_parallel" # THIS IS IN USED. the other were implemented for testing.
         #sort= "allSEL"
         #sort = "both"
         #sort = "risk"
