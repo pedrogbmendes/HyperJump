@@ -11,7 +11,7 @@ requires = [
     'pybnn',
     'cython',
     'scipy',
-    'numpy',
+    'numpy==1.19.5',
     'scikit-learn==0.24.2',
     'ConfigSpace==0.4.14',
     'nose',
