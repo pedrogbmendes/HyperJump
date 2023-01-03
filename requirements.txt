@@ -7,6 +7,7 @@ mpmath
 pandas
 Pillow
 scikit-learn==0.24.2
+statsmodels
 Pyro4
 pybind11
 ConfigSpace
