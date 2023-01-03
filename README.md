@@ -19,7 +19,7 @@ The implementation present in this repo is based on [BOHB](https://github.com/au
 ```cd test && gcc -shared -fPIC -o func.so func.c```
 
 
-You should verified the python version (python3.6), and the version of packages (e.g. numpy=1.16.4, tensorflow=1.14.0, keras=2.2.5, configSpace=0.4.14) to avoid warnings. If you face some errors installing the dependencies, you should uninstall and re-install and verified the dependencies of the library being installed.
+You should verified the python version (python3.6), and the version of packages to avoid warnings. If you face some errors installing the dependencies, you should uninstall and re-install and verified the dependencies of the library being installed.
 
 
 ### Benchmarks
