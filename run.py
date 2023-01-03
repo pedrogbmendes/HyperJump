@@ -4,11 +4,10 @@ import subprocess
 import sys
 
 benchmarks = ["cnn","rnn_time","multilayer_time","unet","nas","nats-tss-cifar10","nats-tss-cifar100","nats-tss-ImageNet16-120"]
-benchmarks = ["nats-tss-ImageNet16-120"]
 
 
 optimizers = ['HB', 'BOHB', 'HJ']
-n_iterations = 2
+n_iterations = 5
 n_workers = 1
 
 for benchmark in benchmarks:
@@ -45,7 +44,7 @@ for benchmark in benchmarks:
             threshold = 0.1
 
 
-        for seed in range(1, 2):
+        for seed in range(1, 31):
 
             command = "python3 launcher.py --max_b=" + str(max_b) + " --eta=" + str(eta) +  " --n_iterations=" + str(n_iterations) + \
                 " --seed=" + str(seed) +  " --benchmark=" + str(benchmark) + " --algorithm=" + str(algorithm) +  " --random_fraction=" + str(random_fraction) + \
