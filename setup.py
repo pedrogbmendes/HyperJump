@@ -26,7 +26,7 @@ requires = [
     'lasagne',
     'mpmath',
     'statsmodels',
-    'pandas',
+    'pandas==1.5.0',
     'Pillow',
     'netifaces',
     'termcolor',
