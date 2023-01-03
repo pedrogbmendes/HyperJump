@@ -16,7 +16,7 @@ The implementation present in this repo is based on [BOHB](https://github.com/au
 * Install HyperJump package
 ```python3 setup.py develop --user```
 * Compile the script to compute the risk EAR
-```cd test && gcc -shared -fPIC -o func.so func.c```
+```cd hyperjump/optimizers/iterations/ && gcc -shared -fPIC -o func.so func.c```
 
 
 You should verified the python version (python3.6), and the version of packages to avoid warnings. If you face some errors installing the dependencies, you should uninstall and re-install and verified the dependencies of the library being installed.
