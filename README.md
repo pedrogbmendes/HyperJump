@@ -29,7 +29,7 @@ You should verified the python version (python3.6), and the version of packages 
 
 
 ### Run HyperJump
-You can deploy HyperJump using the script run.py that you can find in test folder. You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 fake_workload.py``` using the correct arguments (that can be found in this script).
+You can deploy HyperJump using the script launcher.py that you can find in this directory. You can directly run ```python3 run.py``` (do not forget to set the arguments in this script) or run ```python3 launcher.py``` using the correct arguments (that can be found in this script).
 The seeds used in each independent run are set in this script (run.py), and we generate one different seed for each run and give it as input to the function fake_workload.py that is launched in this script.
 
 
