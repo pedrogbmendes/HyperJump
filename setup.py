@@ -30,6 +30,7 @@ requires = [
     'Pillow',
     'netifaces',
     'termcolor',
+    'statsmodels',
     'robo']
 
 
