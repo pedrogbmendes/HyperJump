@@ -24,7 +24,7 @@ You should verified the python version (python3.6), and the version of packages 
 
 ### Benchmarks
 * Download the benchmarks used for a Neural Architectural Search scenario with Cifar10, Cifar100, and ImageNet from [Nats-bench](https://drive.google.com/drive/folders/1zjB6wMANiKwB2A1yil2hQ8H_qyeSe2yt) (pzb2 files) and then copy them to a folder called .torch  (see [Nats-bench-repo](https://github.com/D-X-Y/NATS-Bench) for more details or if you have problems).
-* You can find some of the rest of benchmarks in this [link](https://drive.google.com/drive/folders/18FwyVbZHJSALkwaUceB6iXz4BmX5FmqZ?usp=sharing). These files should be copy to [test/files](https://github.com/pedrogbmendes/HyperJump/tree/main/hyperjump/workers/data) directory. 
+* You can find some of the rest of benchmarks in this [link](https://drive.google.com/drive/folders/18FwyVbZHJSALkwaUceB6iXz4BmX5FmqZ?usp=sharing). These files should be copy to [hyperjump/workers/data](https://github.com/pedrogbmendes/HyperJump/tree/main/hyperjump/workers/data) directory. 
 
 
 
