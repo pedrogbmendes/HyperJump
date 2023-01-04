@@ -31,6 +31,7 @@ requires = [
     'netifaces',
     'termcolor',
     'statsmodels',
+    'direct',
     'robo']
 
 
