@@ -34,7 +34,7 @@ The seeds used in each independent run are set in this script (run.py), and we g
 
 
 ### Results/logs HyperJump
-By default the results/logs of HyperJump are saved in logs folder that you can found in the same folder from where you launch HyperJump ([test/logs](https://github.com/pedrogbmendes/HyperJump/tree/main/logs) directory).
+By default the results/logs of HyperJump are saved in logs folder that you can found in the same folder from where you launch HyperJump ([logs/](https://github.com/pedrogbmendes/HyperJump/tree/main/logs) directory).
 
 
 ### Possible problem while running HyperJump
