@@ -15,7 +15,6 @@ nose
 pyyaml
 git+https://github.com/pedrogbmendes/george.git@development
 git+https://github.com/automl/pybnn.git
-git+https://github.com/automl/george.git@development
 cma
 matplotlib
 netifaces
