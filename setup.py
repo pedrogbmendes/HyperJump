@@ -13,7 +13,7 @@ requires = [
     'scipy',
     'numpy==1.19.5',
     'scikit-learn==0.24.2',
-    'ConfigSpace==0.4.14',
+    'ConfigSpace==0.4.19',
     'nose',
     'pyyaml',
     'jinja2',
