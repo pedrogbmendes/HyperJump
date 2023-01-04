@@ -12,7 +12,7 @@ The implementation present in this repo is based on [BOHB](https://github.com/au
 * Install the following libraries
 ```sudo apt-get install libeigen3-dev swig gfortran```
 * Install the dependencies
-```for req in $(cat requirements.txt); do pip3 install $req; done```
+```for req in $(cat requirements.txt); do pip3 install --user $req; done```
 * Install HyperJump package
 ```python3 setup.py develop --user```
 * Compile the script to compute the risk EAR
